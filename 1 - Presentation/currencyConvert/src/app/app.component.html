@@ -4,15 +4,12 @@
   </h1>
 </div>
 
-<h2>Here are some links to help you start: </h2>
-
 <div class="form-group">
-  <input type="text" class="form-control form-control-sm" name="numberTo" id="numberTo" [(ngModel)]="numberTo"
-    autocomplete="off" [maxlength]="10">
+  <input type="text" class="form-control form-control-sm" name="numberTo" id="numberTo"
+    autocomplete="off" maxlength="10">
 
   <label for="to" class="control-label">To:</label>
-  <select class="form-control form-control-sm" name="currencyTo" id="currencyTo" (change)="getSelectedTo($event)"
-    [(ngModel)]="currencyTo">
+  <select class="form-control form-control-sm" name="currencyTo" id="currencyTo" (change)="getSelectedTo($event)">
     <option value="">Selecione</option>
     <option *ngFor="let currency of currencies" [value]="selectedCurrencyTo">
       {{ currency.Type }}
@@ -21,12 +18,11 @@
 </div>
 
 <div class="form-group">
-  <input type="text" class="form-control form-control-sm" name="numberFrom" id="numberFrom" [(ngModel)]="numberFrom"
-    autocomplete="off" [maxlength]="10">
+  <input type="text" class="form-control form-control-sm" name="numberFrom" id="numberFrom"
+    autocomplete="off" maxlength="10">
 
   <label for="from" class="control-label">From:</label>
-  <select class="form-control form-control-sm" name="currencyFrom" id="currencyFrom" (change)="getSelectedFrom($event)"
-    [(ngMode)]="currencyFrom">
+  <select class="form-control form-control-sm" name="currencyFrom" id="currencyFrom" (change)="getSelectedFrom($event)">
     <option value="">Selecione</option>
     <option *ngFor="let currency of currencies" [value]="selectedCurrencyFrom">
       {{ currency.Type }}

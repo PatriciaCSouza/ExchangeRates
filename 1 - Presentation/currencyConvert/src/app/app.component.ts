@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import { HttpClientModule , HttpResponse, HttpClient } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-root',
@@ -16,7 +18,7 @@ export class AppComponent {
   currencyFrom: string;
   currencyTo: string;
 
-  constructor(private baseService: RequisicaoHttpService) { }
+  constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
     this.carregarCurrency();
@@ -30,7 +32,7 @@ export class AppComponent {
   }
 
   carregarCurrency() {
-    this.baseService.onGet(environment.url.baseApi.concat(environment.url.currencyType.padrao))
+    this.http.get(environment.url.baseApi.concat(environment.url.currencyType.padrao))
       .subscribe((res: HttpResponse<any>) => {
         this.currencies = JSON.parse(res.body);
       },
@@ -40,7 +42,7 @@ export class AppComponent {
   }
 
   convertValue() {
-    this.baseService.onGet(environment.url.baseApi.concat(environment.url.currencyValue.getValueConverted)
+    return this.http.get<any>(environment.url.baseApi.concat(environment.url.currencyValue.getValueConverted)
       .concat(this.currencyFrom)
       .concat(this.currencyTo)
       .concat(this.numberTo))
