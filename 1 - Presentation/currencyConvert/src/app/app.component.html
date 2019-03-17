@@ -1,0 +1,37 @@
+<div style="text-align:center">
+  <h1>
+    {{ title }}!
+  </h1>
+</div>
+
+<h2>Here are some links to help you start: </h2>
+
+<div class="form-group">
+  <input type="text" class="form-control form-control-sm" name="numberTo" id="numberTo" [(ngModel)]="numberTo"
+    autocomplete="off" [maxlength]="10">
+
+  <label for="to" class="control-label">To:</label>
+  <select class="form-control form-control-sm" name="currencyTo" id="currencyTo" (change)="getSelectedTo($event)"
+    [(ngModel)]="currencyTo">
+    <option value="">Selecione</option>
+    <option *ngFor="let currency of currencies" [value]="selectedCurrencyTo">
+      {{ currency.Type }}
+    </option>
+  </select>
+</div>
+
+<div class="form-group">
+  <input type="text" class="form-control form-control-sm" name="numberFrom" id="numberFrom" [(ngModel)]="numberFrom"
+    autocomplete="off" [maxlength]="10">
+
+  <label for="from" class="control-label">From:</label>
+  <select class="form-control form-control-sm" name="currencyFrom" id="currencyFrom" (change)="getSelectedFrom($event)"
+    [(ngMode)]="currencyFrom">
+    <option value="">Selecione</option>
+    <option *ngFor="let currency of currencies" [value]="selectedCurrencyFrom">
+      {{ currency.Type }}
+    </option>
+
+  </select>
+</div>
+<router-outlet></router-outlet>
